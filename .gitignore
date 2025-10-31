@@ -15,7 +15,6 @@ _build/
 _opam/
 
 # Esy generated files
-_esy/
 _release/
 _export/
 npm-debug.log

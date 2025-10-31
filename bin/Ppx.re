@@ -1,10 +1,9 @@
-open Migrate_parsetree;
-
+/* PPX entry point using Ppxlib driver */
+/* The mapper uses compiler-libs AST types which are compatible with ppxlib's AST */
 let mapper = Mapper.getMapper(_ => ());
 
-let _ =
-  Driver.register(~name="ReactIntl", ~args=[], Versions.ocaml_current, (_, _) =>
-    mapper
+let () =
+  Ppxlib.Driver.register_transformation(
+    ~impl=(structure => mapper.structure(mapper, structure)),
+    "ReactIntl",
   );
-
-let _ = Driver.run_as_ppx_rewriter();

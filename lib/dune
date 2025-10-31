@@ -3,5 +3,6 @@
  (wrapped false)
  (public_name res-react-intl.lib)
  (kind ppx_rewriter)
- (libraries ocaml-migrate-parsetree reason yojson unix)
+ (libraries ppxlib ppxlib.ast ppxlib.traverse ppxlib.astlib ocaml-compiler-libs.common reason base stdio yojson unix)
+ (ppx_runtime_libraries base)
  )
