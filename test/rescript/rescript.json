@@ -20,7 +20,7 @@
         }
     ],
     "ppx-flags": [
-        "../ppx"
+        "../../_build/default/bin/ppx_current.exe"
     ],
     "suffix": ".bs.js",
     "namespace": true,
