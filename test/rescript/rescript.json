@@ -1,0 +1,34 @@
+{
+  "name": "rescript-test",
+  "jsx": {
+    "version": 4
+  },
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    },
+    {
+      "dir": "vendors",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "es6-global",
+      "in-source": false
+    }
+  ],
+  "ppx-flags": [
+    "../../_build/default/.ppx/b9aff3a2c50596d8285b03fa26812d58/ppx.exe"
+  ],
+  "suffix": ".bs.js",
+  "namespace": true,
+  "bs-dependencies": [
+    "@rescript/react"
+  ],
+  "warnings": {
+    "number": "",
+    "error": ""
+  }
+}

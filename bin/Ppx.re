@@ -1,9 +1,5 @@
-/* PPX entry point using Ppxlib driver */
-/* The mapper uses compiler-libs AST types which are compatible with ppxlib's AST */
+/* PPX entry point for ReScript/BuckleScript compatibility */
+/* Uses Ast_mapper.run_main instead of ppxlib driver */
 let mapper = Mapper.getMapper(_ => ());
 
-let () =
-  Ppxlib.Driver.register_transformation(
-    ~impl=(structure => mapper.structure(mapper, structure)),
-    "ReactIntl",
-  );
+let () = Ast_mapper.run_main((_argv) => mapper);
