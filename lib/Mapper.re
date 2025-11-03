@@ -150,7 +150,7 @@ let hasIntlAttribute = (items: structure) =>
   items
   |> List.exists(item =>
        switch (item) {
-       | {pstr_desc: Pstr_attribute(({txt: "intl.messages", _}, _)), _} =>
+       | {pstr_desc: Pstr_attribute({attr_name: {txt: "intl.messages", _}, _}), _} =>
          true
        | _ => false
        }
