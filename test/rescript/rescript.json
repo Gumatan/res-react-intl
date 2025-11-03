@@ -1,6 +1,7 @@
 {
     "name": "rescript-test",
     "jsx": {
+        "mode": "automatic",
         "version": 4
     },
     "sources": [
@@ -13,22 +14,15 @@
             "subdirs": true
         }
     ],
-    "package-specs": [
-        {
-            "module": "es6-global",
-            "in-source": false
-        }
+    "package-specs": {
+        "module": "commonjs",
+        "in-source": true
+    },
+    "compiler-flags": [
+        "-ppx /Users/arnaut/Projects/front/ppx/res-react-intl/_build/default/bin/Ppx.exe"
     ],
-    "ppx-flags": [
-        "../../_build/default/bin/ppx_current.exe"
-    ],
-    "suffix": ".bs.js",
-    "namespace": true,
-    "bs-dependencies": [
+    "dependencies": [
         "@rescript/react"
     ],
-    "warnings": {
-        "number": "",
-        "error": ""
-    }
+    "suffix": ".bs.js"
 }
