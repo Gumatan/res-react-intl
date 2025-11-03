@@ -1,7 +1,13 @@
-(executables
-  (names Ppx Extract)
-  (public_names ppx extract)
-  (libraries res-react-intl.lib)
-  (ocamlopt_flags ( -linkall ))
-  (package res-react-intl)
-)
+(executable
+ (name Extract)
+ (public_name extract)
+ (libraries res-react-intl.lib)
+ (ocamlopt_flags (-linkall))
+ (package res-react-intl))
+
+(executable
+ (name Ppx)
+ (public_name ppx)
+ (libraries res-react-intl.lib)
+ (ocamlopt_flags (-linkall))
+ (package res-react-intl))

@@ -1,0 +1,9 @@
+{
+  "name": "res-react-intl",
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ]
+}

@@ -1,10 +1,5 @@
-open Migrate_parsetree;
-
+/* PPX entry point for ReScript/BuckleScript compatibility */
+/* Uses Ast_mapper.run_main instead of ppxlib driver */
 let mapper = Mapper.getMapper(_ => ());
 
-let _ =
-  Driver.register(~name="ReactIntl", ~args=[], Versions.ocaml_current, (_, _) =>
-    mapper
-  );
-
-let _ = Driver.run_as_ppx_rewriter();
+let () = Ast_mapper.run_main((_argv) => mapper);
