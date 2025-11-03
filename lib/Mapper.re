@@ -21,7 +21,7 @@ let findByLabelName = (key, labels) =>
 
 let getValueFromLabel = label =>
   switch (label) {
-  | (_, {pexp_desc: Pexp_constant(Pconst_string(value, _, _)), _}) => value
+  | (_, {pexp_desc: Pexp_constant(Pconst_string(value, _)), _}) => value
   | _ => raise(Not_found)
   };
 
@@ -67,7 +67,7 @@ let findByFieldName = (key, fields) =>
 
 let getValueFromField = field =>
   switch (field) {
-  | (_, {pexp_desc: Pexp_constant(Pconst_string(value, _, _)), _}) => value
+  | (_, {pexp_desc: Pexp_constant(Pconst_string(value, _)), _}) => value
   | _ => raise(Not_found)
   };
 
@@ -106,7 +106,7 @@ let extractMessageFromLabels = (labels, callback) => {
            switch (label) {
            | (
                Labelled(key),
-               {pexp_desc: Pexp_constant(Pconst_string(value, _, _)), _},
+               {pexp_desc: Pexp_constant(Pconst_string(value, _)), _},
              ) =>
              map |> StringMap.add(key, value)
            | _ => map
@@ -130,7 +130,7 @@ let extractMessageFromRecord = (fields, callback) => {
            switch (field) {
            | (
                {txt: Lident(key), _},
-               {pexp_desc: Pexp_constant(Pconst_string(value, _, _)), _},
+               {pexp_desc: Pexp_constant(Pconst_string(value, _)), _},
              ) =>
              map |> StringMap.add(key, value)
            | _ => map
