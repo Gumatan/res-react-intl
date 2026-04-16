@@ -1,4 +1,6 @@
 {
+  "name": "res-react-intl",
+  "version": "0.1.0",
   "devDependencies": {
     "husky": "^4.2.5",
     "lint-staged": "^10.2.2"
