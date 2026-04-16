@@ -1,3 +1,7 @@
+open Migrate_parsetree;
+
+module From_current = Convert(OCaml_current, OCaml_409);
+
 exception PathNotFound(string);
 exception DuplicateMessageId(string);
 exception DefaultMessageNotMatching(string);
@@ -36,7 +40,7 @@ let extract = (~duplicatesAllowed=false, paths) => {
     let ast =
       Reason_toolchain.(
         RE.implementation(lexbuf) |> To_current.copy_structure
-      );
+      ) |> From_current.copy_structure;
     close_in(channel);
 
     extractMessages(ast) |> ignore;
