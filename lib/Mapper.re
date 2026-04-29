@@ -1,3 +1,5 @@
+open Migrate_parsetree;
+open Ast_409;
 open Ast_mapper;
 open Asttypes;
 open Parsetree;
@@ -150,7 +152,7 @@ let hasIntlAttribute = (items: structure) =>
   items
   |> List.exists(item =>
        switch (item) {
-       | {pstr_desc: Pstr_attribute(({txt: "intl.messages", _}, _)), _} =>
+       | {pstr_desc: Pstr_attribute({attr_name: {txt: "intl.messages", _}, _}), _} =>
          true
        | _ => false
        }
@@ -186,8 +188,12 @@ let extractMessagesFromValueBindings =
 
 let matchesFormattedMessage = ident =>
   switch (ident) {
+  // Old ReScript JSX (< v12)
   | Ldot(Ldot(Lident("ReactIntl"), "FormattedMessage"), "createElement")
   | Ldot(Lident("FormattedMessage"), "createElement") => true
+  // New ReScript JSX (v12+) - automatic mode
+  | Ldot(Lident("ReactIntl"), "FormattedMessage")
+  | Lident("FormattedMessage") => true
   | _ => false
   };
 
@@ -226,7 +232,9 @@ let getMapper = (callback: Message.t => unit): mapper => {
 
   expr: (mapper, expr) => {
     switch (expr) {
-    // Match (ReactIntl.)FormattedMessage.createElement
+    // Match FormattedMessage calls
+    // - Old ReScript JSX (< v12): FormattedMessage.createElement
+    // - New ReScript JSX (v12+): FormattedMessage (automatic JSX mode)
     | {
         pexp_desc:
           Pexp_apply(

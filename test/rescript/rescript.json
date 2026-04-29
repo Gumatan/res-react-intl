@@ -1,0 +1,28 @@
+{
+    "name": "rescript-test",
+    "jsx": {
+        "mode": "automatic",
+        "version": 4
+    },
+    "sources": [
+        {
+            "dir": "src",
+            "subdirs": true
+        },
+        {
+            "dir": "vendors",
+            "subdirs": true
+        }
+    ],
+    "package-specs": {
+        "module": "commonjs",
+        "in-source": true
+    },
+    "compiler-flags": [
+        "-ppx /Users/arnaut/Projects/front/ppx/res-react-intl/_build/default/bin/Ppx.exe"
+    ],
+    "dependencies": [
+        "@rescript/react"
+    ],
+    "suffix": ".bs.js"
+}
